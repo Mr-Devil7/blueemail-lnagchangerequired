@@ -53,32 +53,27 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ onClose }) => {
     }
   };
 
-  const getWeatherTips = () => {
-    if (!weatherData) return [];
-    return weatherService.getWeatherBasedTips(weatherData);
-  };
-
-  const getTranslatedTips = () => {
+  const getTranslatedTips = (): string[] => {
     if (!weatherData) return [];
     
     const { temperature, humidity, windSpeed, condition } = weatherData;
     
     // Determine weather type and get translated tips
     if (temperature > 35) {
-      return t('weather.tips.hot_weather');
+      return t('weather.tips.hot_weather') as string[];
     } else if (temperature < 15) {
-      return t('weather.tips.cold_weather');
+      return t('weather.tips.cold_weather') as string[];
     } else if (condition.toLowerCase().includes('rain') || humidity > 80) {
-      return t('weather.tips.rainy_weather');
+      return t('weather.tips.rainy_weather') as string[];
     } else if (windSpeed > 20) {
-      return t('weather.tips.windy_weather');
+      return t('weather.tips.windy_weather') as string[];
     } else if (humidity > 70) {
-      return t('weather.tips.humid_weather');
+      return t('weather.tips.humid_weather') as string[];
     } else if (humidity < 30) {
-      return t('weather.tips.dry_weather');
+      return t('weather.tips.dry_weather') as string[];
     }
     
-    return t('weather.tips.hot_weather');
+    return t('weather.tips.hot_weather') as string[];
   };
 
   return (

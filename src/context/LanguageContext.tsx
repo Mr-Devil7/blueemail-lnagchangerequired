@@ -11,7 +11,7 @@ import rjTranslations from '../translations/rj.json';
 interface LanguageContextType {
   language: string;
   setLanguage: (lang: string) => void;
-  t: (key: string) => string;
+  t: (key: string) => string | string[];
 }
 
 const translations: { [key: string]: any } = {
@@ -48,13 +48,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     localStorage.setItem('language', language);
   }, [language]);
 
-  const t = (key: string): string => {
+  const t = (key: string): string | string[] => {
     const keys = key.split('.');
     let value = translations[language];
     for (const k of keys) {
       value = value?.[k] || key;
     }
-    return typeof value === 'string' ? value : key;
+    return value;
   };
 
   return (
