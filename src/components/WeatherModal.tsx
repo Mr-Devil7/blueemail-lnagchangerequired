@@ -30,7 +30,7 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ onClose }) => {
       const data = await weatherService.getWeatherData(selectedCity);
       setWeatherData(data);
     } catch (err) {
-      setError(t('weather.error'));
+      setError(t('weather.error') as string);
       console.error('Weather fetch error:', err);
     } finally {
       setLoading(false);
@@ -140,7 +140,7 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ onClose }) => {
                     <div className="text-4xl font-bold text-primary mb-2">{weatherData.temperature}°C</div>
                     <p className="text-text/70 font-medium mb-4">{weatherData.condition}</p>
                     
-                    {/* Weather Details Grid */}
+                    {/* Weather Details Grid - Reduced to 4 items */}
                     <div className="grid grid-cols-2 gap-3 text-sm">
                       <div className="bg-white/70 rounded-lg p-3 flex items-center space-x-2">
                         <Droplets className="h-4 w-4 text-blue-500" />
@@ -157,24 +157,10 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ onClose }) => {
                         </div>
                       </div>
                       <div className="bg-white/70 rounded-lg p-3 flex items-center space-x-2">
-                        <Gauge className="h-4 w-4 text-green-500" />
-                        <div>
-                          <div className="text-secondary font-medium">{t('weather.pressure')}</div>
-                          <div className="font-bold">{weatherData.pressure} mb</div>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3 flex items-center space-x-2">
                         <Eye className="h-4 w-4 text-purple-500" />
                         <div>
-                          <div className="text-primary font-medium">{t('weather.visibility')}</div>
+                          <div className="text-secondary font-medium">{t('weather.visibility')}</div>
                           <div className="font-bold">{weatherData.visibility} km</div>
-                        </div>
-                      </div>
-                      <div className="bg-white/70 rounded-lg p-3 flex items-center space-x-2">
-                        <Thermometer className="h-4 w-4 text-red-500" />
-                        <div>
-                          <div className="text-secondary font-medium">{t('weather.feels_like')}</div>
-                          <div className="font-bold">{weatherData.feelsLike}°C</div>
                         </div>
                       </div>
                       <div className="bg-white/70 rounded-lg p-3 flex items-center space-x-2">
@@ -209,11 +195,11 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ onClose }) => {
                           <div className="mt-2 text-xs text-text/50">
                             <div className="flex items-center justify-center space-x-1">
                               <Droplets className="h-3 w-3" />
-                              <span>{day.humidity}%</span>
+                              <span>{day.humidity.toFixed(1)}%</span>
                             </div>
                             <div className="flex items-center justify-center space-x-1 mt-1">
                               <Wind className="h-3 w-3" />
-                              <span>{day.windSpeed}km/h</span>
+                              <span>{day.windSpeed.toFixed(1)}km/h</span>
                             </div>
                           </div>
                         </div>
