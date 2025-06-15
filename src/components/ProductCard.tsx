@@ -1,19 +1,21 @@
 // src/components/ProductCard.tsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { ShoppingCart, Check } from 'lucide-react';
 import { Product } from '../types';
-import { useCartContext } from '../context/CartContext'; // Changed from useCart
+import { useCartContext } from '../context/CartContext';
+import { LanguageContext } from '../context/LanguageContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart } = useCartContext(); // Changed from useCart
+  const { addToCart } = useCartContext();
+  const { t } = useContext(LanguageContext);
   const [isAdded, setIsAdded] = React.useState(false);
 
   const handleAddToCart = () => {
-    addToCart(product); // Adds to the shared cart state
+    addToCart(product);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
   };
@@ -37,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {!product.inStock && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <span className="bg-red-600 text-white px-4 py-2 rounded-lg font-medium">
-              Out of Stock
+              {t('product_card.out_of_stock')}
             </span>
           </div>
         )}
@@ -48,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span className="text-sm text-primary font-medium">{product.category}</span>
         </div>
         <h3 className="text-xl font-bold text-primary mb-2">{product.name}</h3>
-        <p className="text-text/70 mb-2 text-sm">Quantity: {product.quantity}</p>
+        <p className="text-text/70 mb-2 text-sm">{t('product_card.quantity')} {product.quantity}</p>
         <p className="text-text/70 mb-4 line-clamp-2">{product.description}</p>
         
         <div className="flex items-center justify-between">
@@ -69,12 +71,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {isAdded ? (
               <>
                 <Check className="h-4 w-4" />
-                <span>Added!</span>
+                <span>{t('product_card.added')}</span>
               </>
             ) : (
               <>
                 <ShoppingCart className="h-4 w-4" />
-                <span>Add to Cart</span>
+                <span>{t('product_card.add_to_cart')}</span>
               </>
             )}
           </button>

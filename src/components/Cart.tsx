@@ -1,7 +1,8 @@
 // src/components/Cart.tsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { X, Plus, Minus, Trash2, MessageCircle } from 'lucide-react';
-import { useCartContext } from '../context/CartContext'; // Use the context
+import { useCartContext } from '../context/CartContext';
+import { LanguageContext } from '../context/LanguageContext';
 
 const Cart: React.FC = () => {
   const { 
@@ -12,8 +13,9 @@ const Cart: React.FC = () => {
     removeFromCart, 
     getTotalPrice,
     clearCart 
-  } = useCartContext(); // Updated to useCartContext
-
+  } = useCartContext();
+  
+  const { t } = useContext(LanguageContext);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleCheckout = () => {
@@ -48,7 +50,7 @@ const Cart: React.FC = () => {
       <div className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-primary text-white">
-          <h2 className="text-xl font-bold">Shopping Cart</h2>
+          <h2 className="text-xl font-bold">{t('cart.title')}</h2>
           <button
             onClick={() => setIsCartOpen(false)}
             className="p-2 hover:bg-white/20 rounded-lg transition-colors"
@@ -61,8 +63,8 @@ const Cart: React.FC = () => {
         <div className="flex-1 overflow-y-auto max-h-96">
           {cartItems.length === 0 ? (
             <div className="p-6 text-center text-text/60">
-              <p className="mb-2">Your cart is empty.</p>
-              <p className="text-primary font-medium">Start shopping!</p>
+              <p className="mb-2">{t('cart.empty')}</p>
+              <p className="text-primary font-medium">{t('cart.start_shopping')}</p>
             </div>
           ) : (
             <div className="p-6 space-y-4">
@@ -82,7 +84,7 @@ const Cart: React.FC = () => {
                     <p className="text-sm text-text/60">{item.product.quantity}</p>
                     <p className="text-primary font-medium">₹{item.product.price.toFixed(2)}/unit</p>
                     <p className="text-sm font-medium text-secondary">
-                      Subtotal: ₹{(item.product.price * item.quantity).toFixed(2)}
+                      {t('cart.subtotal')} ₹{(item.product.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
                   <div className="flex flex-col items-center space-y-2">
@@ -118,7 +120,7 @@ const Cart: React.FC = () => {
         {cartItems.length > 0 && (
           <div className="p-6 border-t border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-lg font-medium">Total:</span>
+              <span className="text-lg font-medium">{t('cart.total')}</span>
               <span className="text-2xl font-bold text-primary">
                 ₹{getTotalPrice().toFixed(2)}
               </span>
@@ -128,7 +130,7 @@ const Cart: React.FC = () => {
               className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors flex items-center justify-center space-x-2"
             >
               <MessageCircle className="h-5 w-5" />
-              <span>Place Order on WhatsApp</span>
+              <span>{t('cart.place_order')}</span>
             </button>
           </div>
         )}
@@ -140,22 +142,22 @@ const Cart: React.FC = () => {
           <div className="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6">
             <div className="text-center">
               <MessageCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-primary mb-2">Confirm Order</h3>
+              <h3 className="text-xl font-bold text-primary mb-2">{t('cart.confirm_order')}</h3>
               <p className="text-text/70 mb-6">
-                You'll be redirected to WhatsApp to place your order.
+                {t('cart.redirect_message')}
               </p>
               <div className="flex space-x-3">
                 <button
                   onClick={cancelOrder}
                   className="flex-1 border border-gray-300 text-text px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
-                  Cancel
+                  {t('cart.cancel')}
                 </button>
                 <button
                   onClick={confirmOrder}
                   className="flex-1 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-dark transition-colors"
                 >
-                  Confirm
+                  {t('cart.confirm')}
                 </button>
               </div>
             </div>

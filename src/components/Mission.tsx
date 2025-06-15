@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Users, Shield, Smartphone, TrendingUp } from 'lucide-react';
+import { LanguageContext } from '../context/LanguageContext';
 
 const Mission: React.FC = () => {
+  const { t } = useContext(LanguageContext);
+
   const values = [
     {
       icon: Users,
-      title: 'Supporting Small Farmers',
-      description: 'Dedicated to transforming the lives of India\'s small and marginal farmers through accessible technology.'
+      title: t('mission.values.supporting_farmers.title'),
+      description: t('mission.values.supporting_farmers.description')
     },
     {
       icon: Smartphone,
-      title: 'Easy Access',
-      description: 'Simple-to-use website and WhatsApp marketplace that makes farming information and supplies easily accessible.'
+      title: t('mission.values.easy_access.title'),
+      description: t('mission.values.easy_access.description')
     },
     {
       icon: Shield,
-      title: 'Trusted Partnership',
-      description: 'Your reliable partner every step of the way, from sowing season to harvest management.'
+      title: t('mission.values.trusted_partnership.title'),
+      description: t('mission.values.trusted_partnership.description')
     },
     {
       icon: TrendingUp,
-      title: 'Smart Growth',
-      description: 'Helping farmers grow smarter with data-driven insights and quality products at fair prices.'
+      title: t('mission.values.smart_growth.title'),
+      description: t('mission.values.smart_growth.description')
     }
   ];
 
@@ -29,27 +32,27 @@ const Mission: React.FC = () => {
     <section className="py-20 bg-accent/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Our Mission</h2>
+          <h2 className="text-4xl font-bold text-primary mb-4">{t('mission.title')}</h2>
           <p className="text-xl text-text/70 max-w-3xl mx-auto">
-            Transforming agriculture by making farming simpler, smarter, and more profitable for every farmer across India.
+            {t('mission.description')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-primary">
-              Your Trusted Farming Partner
+              {t('mission.subheading')}
             </h3>
             <p className="text-text/70 leading-relaxed">
-              At Agrow, we're dedicated to transforming the lives of India's small and marginal farmers by making farming simpler, smarter, and more profitable. Our easy-to-use platform provides essential farming information and real-time weather updates to help you plan your crops with confidence.
+              {t('mission.text1')}
             </p>
             <p className="text-text/70 leading-relaxed">
-              Through our WhatsApp marketplace, you can directly purchase high-quality seeds, fertilizers, and plants at fair prices, saving time and ensuring you get the best for your farm. Whether you're preparing for the sowing season or managing your harvest, Agrow is with you every step of the way.
+              {t('mission.text2')}
             </p>
             <div className="bg-white p-6 rounded-xl shadow-sm border border-primary/20">
-              <h4 className="font-bold text-primary mb-2">Join Our Community</h4>
+              <h4 className="font-bold text-primary mb-2">{t('mission.community.title')}</h4>
               <p className="text-text/70">
-                Join thousands of farmers who are growing smarter with Agrow. Connect with us today and discover how we can help transform your farming journey.
+                {t('mission.community.description')}
               </p>
             </div>
           </div>

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { products } from '../data/products';
 import ProductCard from './ProductCard';
+import { LanguageContext } from '../context/LanguageContext';
 
 const Services: React.FC = () => {
+  const { t } = useContext(LanguageContext);
   const [selectedCategory, setSelectedCategory] = useState<string>('Insecticides');
   
   const categories = [
-    { id: 'Insecticides', name: 'Insecticides', icon: '🛡️' },
-    { id: 'Seeds', name: 'Seeds', icon: '🌱' },
-    { id: 'Fertilizers', name: 'Fertilizers', icon: '🧪' },
-    { id: 'Plants', name: 'Plants', icon: '🌿' }
+    { id: 'Insecticides', name: t('services.categories.insecticides'), icon: '🛡️' },
+    { id: 'Seeds', name: t('services.categories.seeds'), icon: '🌱' },
+    { id: 'Fertilizers', name: t('services.categories.fertilizers'), icon: '🧪' },
+    { id: 'Plants', name: t('services.categories.plants'), icon: '🌿' }
   ];
 
   // Listen for category change events from footer
@@ -27,14 +29,28 @@ const Services: React.FC = () => {
 
   const filteredProducts = products.filter(product => product.category === selectedCategory);
 
+  const getCategoryDescription = (categoryId: string) => {
+    switch (categoryId) {
+      case 'Insecticides':
+        return t('services.category_descriptions.insecticides');
+      case 'Seeds':
+        return t('services.category_descriptions.seeds');
+      case 'Fertilizers':
+        return t('services.category_descriptions.fertilizers');
+      case 'Plants':
+        return t('services.category_descriptions.plants');
+      default:
+        return '';
+    }
+  };
+
   return (
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-primary mb-4">Our Products & Services</h2>
+          <h2 className="text-4xl font-bold text-primary mb-4">{t('services.title')}</h2>
           <p className="text-xl text-text/70 max-w-3xl mx-auto">
-            Discover our comprehensive range of agricultural products designed 
-            to optimize your farming operations and maximize productivity.
+            {t('services.description')}
           </p>
         </div>
 
@@ -62,10 +78,7 @@ const Services: React.FC = () => {
             {categories.find(cat => cat.id === selectedCategory)?.name}
           </h3>
           <p className="text-text/70">
-            {selectedCategory === 'Insecticides' && 'Effective pest control solutions for healthy crop protection'}
-            {selectedCategory === 'Seeds' && 'Premium quality seeds for optimal crop yield and growth'}
-            {selectedCategory === 'Fertilizers' && 'Organic and chemical fertilizers for enhanced soil nutrition'}
-            {selectedCategory === 'Plants' && 'Beautiful plants and saplings for landscaping and gardening'}
+            {getCategoryDescription(selectedCategory)}
           </p>
         </div>
 
@@ -79,23 +92,25 @@ const Services: React.FC = () => {
         {/* Product Count */}
         <div className="text-center mt-8">
           <p className="text-text/60">
-            Showing {filteredProducts.length} products in {selectedCategory}
+            {t('services.showing_products', { 
+              count: filteredProducts.length, 
+              category: categories.find(cat => cat.id === selectedCategory)?.name 
+            })}
           </p>
         </div>
 
         {/* CTA Section */}
         <div className="text-center mt-16">
           <div className="bg-primary text-white rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">Need Custom Solutions?</h3>
+            <h3 className="text-3xl font-bold mb-4">{t('services.cta.title')}</h3>
             <p className="text-white/90 mb-6 text-lg">
-              We offer customized agricultural solutions tailored to your specific needs. 
-              Get in touch with our experts to discuss your requirements.
+              {t('services.cta.description')}
             </p>
             <button 
               onClick={() => window.open('https://wa.me/918904959058', '_blank')}
               className="bg-white text-primary px-8 py-3 rounded-lg font-medium hover:bg-accent/20 transition-colors"
             >
-              Contact Our Experts
+              {t('services.cta.button')}
             </button>
           </div>
         </div>

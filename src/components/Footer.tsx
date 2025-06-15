@@ -1,44 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Mail, Phone, Facebook, Instagram, MessageCircle, Users } from 'lucide-react';
+import { LanguageContext } from '../context/LanguageContext';
 
 interface FooterProps {
   onNavigate: (section: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const { t } = useContext(LanguageContext);
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     company: [
-      { label: 'About Us', action: () => onNavigate('home') },
-      { label: 'Our Mission', action: () => onNavigate('home') },
-      { label: 'Services', action: () => onNavigate('services') },
-      { label: 'Contact', action: () => onNavigate('contact') }
+      { label: t('footer.about_us'), action: () => onNavigate('home') },
+      { label: t('footer.our_mission'), action: () => onNavigate('home') },
+      { label: t('footer.services'), action: () => onNavigate('services') },
+      { label: t('footer.contact'), action: () => onNavigate('contact') }
     ],
     products: [
-      { label: 'Insecticides', action: () => {
+      { label: t('footer.insecticides'), action: () => {
         onNavigate('services');
-        // Set category after navigation
         setTimeout(() => {
           const event = new CustomEvent('setCategory', { detail: 'Insecticides' });
           window.dispatchEvent(event);
         }, 100);
       }},
-      { label: 'Seeds', action: () => {
+      { label: t('footer.seeds'), action: () => {
         onNavigate('services');
         setTimeout(() => {
           const event = new CustomEvent('setCategory', { detail: 'Seeds' });
           window.dispatchEvent(event);
         }, 100);
       }},
-      { label: 'Fertilizers', action: () => {
+      { label: t('footer.fertilizers'), action: () => {
         onNavigate('services');
         setTimeout(() => {
           const event = new CustomEvent('setCategory', { detail: 'Fertilizers' });
           window.dispatchEvent(event);
         }, 100);
       }},
-      { label: 'Plants', action: () => {
+      { label: t('footer.plants'), action: () => {
         onNavigate('services');
         setTimeout(() => {
           const event = new CustomEvent('setCategory', { detail: 'Plants' });
@@ -47,16 +48,16 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       }}
     ],
     support: [
-      { label: 'Documentation', action: () => {} },
-      { label: 'Installation Guide', action: () => {} },
-      { label: 'Technical Support', action: () => onNavigate('contact') },
-      { label: 'Warranty', action: () => {} }
+      { label: t('footer.documentation'), action: () => {} },
+      { label: t('footer.installation_guide'), action: () => {} },
+      { label: t('footer.technical_support'), action: () => onNavigate('contact') },
+      { label: t('footer.warranty'), action: () => {} }
     ],
     legal: [
-      { label: 'Terms of Use', action: () => onNavigate('terms') },
-      { label: 'Privacy Policy', action: () => {} },
-      { label: 'Cookie Policy', action: () => {} },
-      { label: 'GDPR Compliance', action: () => {} }
+      { label: t('footer.terms_of_use'), action: () => onNavigate('terms') },
+      { label: t('footer.privacy_policy'), action: () => {} },
+      { label: t('footer.cookie_policy'), action: () => {} },
+      { label: t('footer.gdpr_compliance'), action: () => {} }
     ]
   };
 
@@ -95,7 +96,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 alt="Agrow Logo"
                 className="h-8 w-auto brightness-0 invert"
                 onError={(e) => {
-                  // Fallback to text logo if image fails to load
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling!.style.display = 'flex';
                 }}
@@ -108,7 +108,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
             </div>
             <p className="text-white/80 mb-6 leading-relaxed">
-              Agrow is your one-stop app for seeds, fertilizers, plants, weather updates, and more, empowering Indian farmers to grow smarter. Join our community today! 🌾
+              {t('footer.description')}
             </p>
             
             <div className="space-y-3">
@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.company')}</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
@@ -141,7 +141,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Products</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.products')}</h3>
             <ul className="space-y-2">
               {footerLinks.products.map((link, index) => (
                 <li key={index}>
@@ -157,7 +157,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.legal')}</h3>
             <ul className="space-y-2">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
@@ -192,10 +192,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <div className="text-center md:text-right">
               <p className="text-white/60">
-                © {currentYear} Agrow. All rights reserved.
+                © {currentYear} Agrow. {t('footer.rights_reserved')}
               </p>
               <p className="text-white/40 text-sm mt-1">
-                Registered trademark of Agrow
+                {t('footer.trademark')}
               </p>
             </div>
           </div>

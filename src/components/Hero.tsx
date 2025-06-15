@@ -18,11 +18,10 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold text-primary leading-tight">
-                Kisan ki Har Zarurat Ka Smart Jawab
+                {t('hero.headline')}
               </h1>
               <p className="text-xl text-text/80 leading-relaxed">
-                Discover Seeds, Fertilizers, Plants, Weather Updates, Farming News, Tips & More – All in One Place. 
-                Compare, Choose, and Grow Smarter – Save Time, Cut Costs by 20%, and Reduce Losses with Agrow.
+                {t('hero.description')}
               </p>
             </div>
 
@@ -38,23 +37,29 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate('contact')}
                 className="border-2 border-secondary text-secondary px-8 py-4 rounded-lg font-medium hover:bg-secondary hover:text-white transition-all duration-200"
               >
-                Join Agrow
+                {t('hero.get_started')}
               </button>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">1000+</div>
-                <div className="text-text/70">Happy Farmers</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  {t('hero.stats.happy_farmers')}
+                </div>
+                <div className="text-text/70">{t('hero.stats.happy_farmers_label')}</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">20%</div>
-                <div className="text-text/70">Cost Savings</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  {t('hero.stats.cost_savings')}
+                </div>
+                <div className="text-text/70">{t('hero.stats.cost_savings_label')}</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">24/7</div>
-                <div className="text-text/70">Support</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  {t('hero.stats.support')}
+                </div>
+                <div className="text-text/70">{t('hero.stats.support_label')}</div>
               </div>
             </div>
           </div>
@@ -76,8 +81,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <MessageCircle className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium text-text">WhatsApp Marketplace</div>
-                  <div className="text-sm text-text/60">Direct Purchase</div>
+                  <div className="font-medium text-text">{t('hero.cards.whatsapp_marketplace')}</div>
+                  <div className="text-sm text-text/60">{t('hero.cards.whatsapp_marketplace_sub')}</div>
                 </div>
               </div>
             </div>
@@ -88,8 +93,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <Cloud className="h-6 w-6 text-secondary" />
                 </div>
                 <div>
-                  <div className="font-medium text-text">Real-Time Weather</div>
-                  <div className="text-sm text-text/60">Crop Planning</div>
+                  <div className="font-medium text-text">{t('hero.cards.real_time_weather')}</div>
+                  <div className="text-sm text-text/60">{t('hero.cards.real_time_weather_sub')}</div>
                 </div>
               </div>
             </div>
@@ -100,8 +105,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <TrendingUp className="h-6 w-6 text-accent-dark" />
                 </div>
                 <div>
-                  <div className="font-medium text-text">Smart Farming</div>
-                  <div className="text-sm text-text/60">Profitable Growth</div>
+                  <div className="font-medium text-text">{t('hero.cards.smart_farming')}</div>
+                  <div className="text-sm text-text/60">{t('hero.cards.smart_farming_sub')}</div>
                 </div>
               </div>
             </div>
