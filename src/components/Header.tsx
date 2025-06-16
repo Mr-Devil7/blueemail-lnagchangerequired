@@ -21,6 +21,7 @@ const Header: React.FC<HeaderProps> = ({ currentSection, onNavigate }) => {
   const navItems = [
     { id: 'home', label: t('header.home') },
     { id: 'services', label: t('header.services') },
+    { id: 'news', label: t('header.news') },
     { id: 'contact', label: t('header.contact') },
     { id: 'terms', label: t('header.terms') },
   ];

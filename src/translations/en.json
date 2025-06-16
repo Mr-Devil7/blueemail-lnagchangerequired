@@ -2,6 +2,7 @@
   "header": {
     "home": "Home",
     "services": "Services",
+    "news": "News",
     "contact": "Contact",
     "terms": "Terms",
     "weather": "Weather Updates"
@@ -105,28 +106,28 @@
     }
   },
   "testimonials": {
-    "title": "What Our Customers Say",
-    "description": "Hear from farmers and agricultural professionals who have transformed their operations with our innovative solutions.",
-    "join_cta": "Join thousands of satisfied customers worldwide",
+    "title": "What Our Farmers Say",
+    "description": "Hear from farmers across India who have transformed their agricultural practices with Agrow's products and services.",
+    "join_cta": "Join thousands of successful farmers across India",
     "start_journey": "Start Your Journey",
     "items": [
       {
-        "name": "Ram Singh",
-        "role": "Organic Farmer",
+        "name": "Rajesh Kumar",
+        "role": "Wheat & Rice Farmer",
         "location": "Jaipur, Rajasthan",
-        "text": "Agrow's irrigation system has transformed our farm operations. We've reduced water usage by 40% and increased crop yields."
+        "text": "Agrow's high-quality seeds and fertilizers have increased my wheat yield by 30%. The WhatsApp ordering system is so convenient, and their weather updates help me plan my irrigation perfectly."
       },
       {
-        "name": "Murugan",
-        "role": "Commercial Farmer",
+        "name": "Priya Devi",
+        "role": "Organic Vegetable Farmer",
         "location": "Chennai, Tamil Nadu",
-        "text": "The crop monitoring system has been a game-changer for our large-scale operations. Early issue detection has saved us thousands."
+        "text": "As a woman farmer, Agrow has been incredibly supportive. Their organic fertilizers and expert advice through WhatsApp have helped me grow the healthiest vegetables in my village."
       },
       {
-        "name": "Priya Sharma",
-        "role": "Greenhouse Manager",
+        "name": "Suresh Patel",
+        "role": "Cotton & Sugarcane Farmer",
         "location": "Udaipur, Rajasthan",
-        "text": "Agrow's automated greenhouse system has revolutionized our crop management. Precise control and real-time monitoring have significantly improved our crop quality."
+        "text": "The quality of Agrow's cotton seeds is exceptional. Combined with their real-time weather alerts and farming tips, I've been able to reduce crop losses and increase my profits significantly."
       }
     ]
   },
@@ -151,6 +152,70 @@
       "description": "We offer customized agricultural solutions tailored to your specific needs. Get in touch with our experts to discuss your requirements.",
       "button": "Contact Our Experts"
     }
+  },
+  "news": {
+    "title": "Agricultural News & Insights",
+    "description": "Stay updated with the latest news, trends, and insights from the world of agriculture and farming technology.",
+    "loading": "Loading latest agricultural news...",
+    "categories": {
+      "all": "All News",
+      "technology": "AgriTech",
+      "market": "Market Trends",
+      "weather": "Weather & Climate",
+      "policy": "Policy & Regulations",
+      "sustainability": "Sustainability"
+    },
+    "latest_news": "Latest News",
+    "farming_tips": "Daily Farming Tips",
+    "trending": "Trending",
+    "showing_articles": "Showing {count} articles",
+    "quick_weather": "Today's Weather",
+    "perfect_farming_weather": "Perfect for farming",
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get daily agricultural news and tips delivered to your WhatsApp.",
+      "subscribe": "Subscribe Now"
+    },
+    "articles": [
+      {
+        "title": "Revolutionary Drone Technology Transforms Indian Agriculture",
+        "summary": "New AI-powered drones are helping farmers monitor crop health, optimize irrigation, and increase yields by up to 25% across various Indian states."
+      },
+      {
+        "title": "Organic Farming Market Sees 40% Growth in Rural India",
+        "summary": "The demand for organic produce continues to rise, creating new opportunities for farmers to transition to sustainable farming practices and premium pricing."
+      },
+      {
+        "title": "Government Announces New Subsidies for Smart Irrigation Systems",
+        "summary": "Latest policy changes provide up to 60% subsidies for farmers adopting water-efficient irrigation technologies, promoting sustainable water usage."
+      },
+      {
+        "title": "Climate-Resilient Crop Varieties Show Promise in Drought-Prone Areas",
+        "summary": "Research institutes release new seed varieties that can withstand extreme weather conditions, offering hope for farmers in challenging climates."
+      },
+      {
+        "title": "Monsoon Forecast Predicts Normal Rainfall for Upcoming Season",
+        "summary": "Meteorological department's latest analysis suggests favorable conditions for kharif crops, with well-distributed rainfall expected across major agricultural regions."
+      }
+    ],
+    "tips": [
+      {
+        "title": "Optimal Irrigation Timing",
+        "description": "Water your crops early morning (5-7 AM) or late evening (6-8 PM) to minimize water loss through evaporation and ensure maximum absorption."
+      },
+      {
+        "title": "Natural Pest Control",
+        "description": "Use neem oil spray and companion planting with marigolds to naturally deter pests without harmful chemicals, protecting both crops and beneficial insects."
+      },
+      {
+        "title": "Soil Health Monitoring",
+        "description": "Test your soil pH every 6 months and add organic compost regularly to maintain optimal nutrient levels and improve soil structure."
+      },
+      {
+        "title": "Harvest Timing",
+        "description": "Monitor crop maturity indicators daily and harvest during cool morning hours to maintain quality and extend storage life of your produce."
+      }
+    ]
   },
   "product_card": {
     "quantity": "Quantity:",

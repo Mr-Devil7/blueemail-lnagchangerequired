@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Terms from './components/Terms';
 import Services from './components/Services';
+import News from './components/News';
 import Cart from './components/Cart';
 import LanguagePopup from './components/LanguagePopup';
 import { CartProvider } from './context/CartContext'; // Import the CartProvider
@@ -30,6 +31,8 @@ function App() {
         return <Contact />;
       case 'services':
         return <Services />;
+      case 'news':
+        return <News />;
       case 'home':
       default:
         return (
